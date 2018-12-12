@@ -5,7 +5,7 @@
 #for t in $( find . -name test.sh ); do
 
 # For now, run the ones that are fixed.
-for t in conode scmgr status cosi pop cisc
+for t in conode scmgr status blsftcosi/blscosi pop cisc
 do
 	echo -e "\n** Running integration-test $t"
 	( cd $t; ./test.sh ) || exit 1
