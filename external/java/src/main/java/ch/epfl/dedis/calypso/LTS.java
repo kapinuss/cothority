@@ -1,8 +1,7 @@
 package ch.epfl.dedis.calypso;
 
-import ch.epfl.dedis.byzcoin.ByzCoinRPC;
-import ch.epfl.dedis.lib.crypto.Ed25519Point;
 import ch.epfl.dedis.lib.crypto.Point;
+import ch.epfl.dedis.lib.crypto.PointFactory;
 import ch.epfl.dedis.lib.exception.CothorityCryptoException;
 import ch.epfl.dedis.lib.proto.Calypso;
 
@@ -21,10 +20,10 @@ public class LTS {
     public LTS(Calypso.CreateLTSReply reply){
         try {
             ltsId = new LTSId(reply.getLtsid());
+            X = PointFactory.getInstance().fromProto(reply.getX());
         } catch (CothorityCryptoException e){
             throw new RuntimeException(e.getMessage());
         }
-        X = new Ed25519Point(reply.getX());
     }
 
     /**
